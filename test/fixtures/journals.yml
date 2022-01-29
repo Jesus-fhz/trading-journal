@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notes: MyText
+  journal_date: 2022-01-29
+  transaction_id: 1
+
+two:
+  notes: MyText
+  journal_date: 2022-01-29
+  transaction_id: 1
