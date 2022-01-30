@@ -1,0 +1,13 @@
+
+closeModal()
+<% if !@type.errors.any? %>
+link = document.querySelector("[id-attr='<%= @type.id %>']")
+link.innerHTML = "<%= @type.name %>"
+<%= render partial: "messages", locals: {class_name: "info", message: flash[:notice]} %>
+<% else %>
+<%= render partial: "messages", locals: {class_name: "danger", message: flash[:notice]}  %>
+<% end %>
+
+
+
+

@@ -1,2 +1,8 @@
-<h1>Types#index</h1>
-<p>Find me in app/views/types/index.html.erb</p>
+<h1>Types of Transactions </h1>
+<%= link_to "Add New Type", new_type_path, remote: true, :'data-bs-toggle' => 'modal', :'data-bs-target' => '#typeModal'   %>
+<div id="render-types">
+   <%= render  @types %>
+</div>
+<div class="container messages">
+</div>
+<%= render partial:'modal' %>

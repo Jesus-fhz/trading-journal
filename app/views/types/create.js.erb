@@ -1,0 +1,8 @@
+closeModal()
+<% if !@type.errors.any?  %>
+    el = document.querySelector("#render-types");
+    el.insertAdjacentHTML("beforeend", "<%= j render(@type) %>")
+    <%= render partial: "messages", locals: {class_name: "success", message: flash[:notice]} %>
+<% else %>
+    <%= render partial: "messages", locals: {class_name: "danger", message: flash[:notice]}  %>
+<% end %>
