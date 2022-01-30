@@ -4,6 +4,7 @@ class TradesController < ApplicationController
   end
 
   def show
+    @trades = Trade.find(params[:id])
   end
 
   def edit

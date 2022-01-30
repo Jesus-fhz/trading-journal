@@ -1,2 +1,73 @@
-<h1>Trades#show</h1>
-<p>Find me in app/views/trades/show.html.erb</p>
+<div class="container">
+   <div class="row justify-content-md-center">
+      <div class="card border-secondary col-md-8 reset-padding mt-3" >
+         <div class="card-header">Viewing Transaction and Notes</div>
+         <div class="card-body">
+            <h4 class="card-title">Transactions</h4>
+            <div class="row justify-content-md-center">
+               <div class="col-md-6">
+                  <ul class="list-group">
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Platform:</h5>
+                        <%= @trades.platform %>
+                     </li>
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Symbol:</h5>
+                        <%= @trades.symbol %>
+                     </li>
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Entry Date:</h5>
+                        <%= @trades.entry_date %>
+                     </li>
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Exit Date:</h5>
+                        <%= @trades.exit_date %>
+                     </li>
+                  </ul>
+               </div>
+               <div class="col-md-6">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Leverage:</h5>
+                        <%= @trades.leverage %>
+                    </li>        
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Position:</h5>
+                        <%= @trades.entry_amount %>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Entry Price:</h5>
+                        <%= @trades.entry_price %>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h5>Exit  Price:</h5>
+                        <%= @trades.exit_price %>
+                    </li>
+               </div>
+            </div>
+            <div class="row justify-content-md-center mt-5">
+             <div class="col-md-12">
+             <h4 class="card-title">Notes</h4>
+              <%@trades.journals.each do |el| %>
+               <div class="accordion" id="accordion<%= el.id %>">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading<%= el.id %>">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= el.id %>" aria-expanded="false" aria-controls="collapse<%= el.id %>">
+                            <%= el.journal_date %>
+                        </button>
+                        </h2>
+                        <div id="collapse<%= el.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= el.id %>" data-bs-parent="#accordion<%= el.id %>" >
+                        <div class="accordion-body">
+                            <p>
+                                <%= el.notes %>
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

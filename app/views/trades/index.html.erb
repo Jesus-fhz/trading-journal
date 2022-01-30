@@ -13,21 +13,27 @@
                  <th>Exit Price</th>
                  <th>Leverage</th>
                  <th>Exit Date </th>
+                 <th></th>
                  
              </thead>
-              <% @trades.each do |el| %>
               <tbody>
-             <tr>
-                 <td><%= el.platform %> </td>
-                 <td><%= el.symbol %> </td>
-                 <td><%= el.type.name %> </td>
-                 <td><%= el.entry_date %> </td>
-                 <td><%= el.entry_price %> </td>
-                 <td><%= el.entry_amount %> </td>
-                 <td><%= el.exit_price %> </td>
-                 <td><%= el.leverage %> </td>
-                 <td><%= el.exit_date %> </td>
-             </tr>
+              <% @trades.each do |el| %>
+                <a href="#">
+                    <tr>
+                        <td><%= el.platform %> </td>
+                        <td><%= el.symbol %> </td>
+                        <td><%= el.type.name %> </td>
+                        <td><%= el.entry_date %> </td>
+                        <td><%= el.entry_price %> </td>
+                        <td><%= el.entry_amount %> </td>
+                        <td><%= el.exit_price %> </td>
+                        <td><%= el.leverage %> </td>
+                        <td><%= el.exit_date %> </td>
+                        <td>
+                        <%= link_to "View", trade_path(el.id),  class: "btn btn-outline-primary" %>
+                        <%= link_to "Edit", edit_trade_path(el.id),  class: "btn btn-outline-dark" %>
+                    </tr>
+                </a> 
              <% end %>
              </tbody>
         </table>
