@@ -1,2 +1,35 @@
 <h1>Trades#index</h1>
 <p>Find me in app/views/trades/index.html.erb</p>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="table-dark"> 
+                 <th>Platform</th>
+                 <th>Symbol</th>
+                 <th>Transaction Type</th>
+                 <th>Entry Date</th>
+                 <th>Entry Price </th>
+                 <th>Entry Amount </th>
+                 <th>Exit Price</th>
+                 <th>Leverage</th>
+                 <th>Exit Date </th>
+                 
+             </thead>
+              <% @trades.each do |el| %>
+              <tbody>
+             <tr>
+                 <td><%= el.platform %> </td>
+                 <td><%= el.symbol %> </td>
+                 <td><%= el.type.name %> </td>
+                 <td><%= el.entry_date %> </td>
+                 <td><%= el.entry_price %> </td>
+                 <td><%= el.entry_amount %> </td>
+                 <td><%= el.exit_price %> </td>
+                 <td><%= el.leverage %> </td>
+                 <td><%= el.exit_date %> </td>
+             </tr>
+             <% end %>
+             </tbody>
+        </table>
+    <div>
+</div>
