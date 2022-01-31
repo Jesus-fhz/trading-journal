@@ -1,12 +1,14 @@
 <h1>Trades#index</h1>
 <p>Find me in app/views/trades/index.html.erb</p>
+<%=  link_to 'Add new', new_trade_path, class: "btn btn-primary mx-1" %>
+<%= render partial: 'errors' %>
 <div class="container">
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="table-dark"> 
                  <th>Platform</th>
                  <th>Symbol</th>
-                 <th>Transaction Type</th>
+                 <th>Exit type</th>
                  <th>Entry Date</th>
                  <th>Entry Price </th>
                  <th>Entry Amount </th>

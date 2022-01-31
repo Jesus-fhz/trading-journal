@@ -28,19 +28,19 @@ class TypesController < ApplicationController
 
   #Creating new type of transaction
 	def create
-    @type = Type.new(name: params[:type][:name])
-    if @type.save
-      flash[:notice] =  'Type of transaction was successfully updated.'
-    else
-      flash[:notice] =  'Something when wrong'
-    end
+		@type = Type.new(name: params[:type][:name])
+		if @type.save
+		flash[:notice] =  'Type of transaction was successfully updated.'
+		else
+		flash[:notice] =  'Something when wrong'
+		end
 	end
 
   
   #Deleting method
 	def destroy
-		@result = Type.destroy(params[:id])
-		if @result
+		@result = Type.find(params[:id])
+		if @result.destroy
 			@types = Type.all
 			flash[:notice] =  "Type  #{@result.name}  was successfully deleted."
 		else
