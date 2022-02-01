@@ -85,7 +85,7 @@ const creatingEditor = function(){
 //Waching notes
 const editingNotes = function(){
       const allNotes = document.querySelectorAll(".view-note-unique");
-      if (allNotes.length > 1){
+      if (allNotes.length >= 1){
           allNotes.forEach(function(item){
                 const notes = item.children[0];
                 const quill = item.children[1];
@@ -112,6 +112,8 @@ const parseNotes = function(notes){
      }
 }
 
-confirmation();
-creatingEditor();
-editingNotes();
+window.addEventListener('load', (event) => {
+    confirmation();
+    creatingEditor();
+    editingNotes();
+  });

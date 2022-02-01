@@ -21,7 +21,7 @@ User.destroy_all
 u1 = User.create!(
     name: 'Jesus',
     last_name: 'Flores',
-    email: 'jf@ss.com',
+    email: 'hola@ga.com',
     dob: '1993/02/25',
     password: 'chicken'
 )
@@ -29,7 +29,7 @@ u1 = User.create!(
 u2 = User.create!(
     name: 'Yuliana',
     last_name: 'Flores',
-    email: 'jf@ss.com',
+    email: 'jfss@ss.com',
     dob: '1993/02/25',
     password: 'chicken'
 )

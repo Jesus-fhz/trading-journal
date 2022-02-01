@@ -1,5 +1,5 @@
 class TypesController < ApplicationController
-
+  before_action :check_if_logged_in
   #Getting all type of transaction
 	def index
 		@types = Type.all

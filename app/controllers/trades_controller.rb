@@ -1,10 +1,14 @@
 class TradesController < ApplicationController
+
+  before_action :check_if_logged_in
+
   def index
-    @trades = Trade.all
+    @trades = Trade.where(user_id: @current_user.id)
   end
 
   def show
     @trades = Trade.find(params[:id])
+    redirect_to login_path unless @trades.user_id == @current_user.id 
   end
 
   def edit
@@ -38,10 +42,6 @@ class TradesController < ApplicationController
 
   def update
     @trade = Trade.find  params[:id]
-    #Don't perform the edit on this item if the ids don't match
-    # if @trade.user_id != @current_user.id #Trying to edit something that's from its user
-    #     return redirect_to login_path 
-    # end
     if @trade.update trade_params
       redirect_to trade_path(@trade.id)
     else
@@ -50,7 +50,8 @@ class TradesController < ApplicationController
   end
 
   private def trade_params
-    params.require(:trade).permit(:platform, :symbol, :type_id, :entry_date, :entry_price, :entry_amount, :exit_price, :leverage, :exit_date)
+    user = { user_id: @current_user.id }
+    params.require(:trade).permit(:platform, :symbol, :type_id, :entry_date, :entry_price, :entry_amount, :exit_price, :leverage, :exit_date).reverse_merge(user)
   end
 
   

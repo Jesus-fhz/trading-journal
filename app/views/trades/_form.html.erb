@@ -1,12 +1,16 @@
 
 <% if @trade.errors.any? %>
-    <ul>
+<div class="alert alert-dismissible alert-danger">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <ul>
     <% @trade.errors.full_messages.each do |el| %>
         <li>
             <%=el %>
         </li>
     <% end %>
     </ul>
+</div>
+    
 <% end %>
 <%= form_with model: @trade, local: true do |f| %>
     <div class=" col-md-12">

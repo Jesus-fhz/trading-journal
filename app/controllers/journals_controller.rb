@@ -1,4 +1,5 @@
 class JournalsController < ApplicationController
+  before_action :check_if_logged_in
   
   def new
     @journal = Journal.new
@@ -18,17 +19,25 @@ class JournalsController < ApplicationController
     @journal = Journal.find(params[:id])
   end
 
-  def update
+  def update 
+    @journal = Journal.find_by(id: params[:id])
+    if @journal.update journal_params()
+      flash[:notice] = "Note has been modified!"
+    else
+      flash[:error] = "There's been an error creating the note"
+    end
+    redirect_to trade_path(params[:journal][:trade_id])
   end
 
   def create
     @journal = Journal.new(notes: params[:journal][:notes], trade_id: params[:journal][:trade_id], journal_date: DateTime.now.strftime('%m-%d-%Y'))
     @journal.save
     if  @journal.persisted?
-      redirect_to trades_path
+      flash[:notice] = "Your note has been added!"
     else
-      render :new                                                                                                                                                
+      flash[:error] = "There's been an error creating the note"
     end
+    redirect_to trade_path(params[:journal][:trade_id])
   end
 
   def index
@@ -42,5 +51,9 @@ class JournalsController < ApplicationController
       flash[:error] = "There's been an error deleting the item, contact admin."
     end
     redirect_to trade_path(journal.trade.id)
+  end
+
+  private def journal_params
+    params.require(:journal).permit(:notes, :journal_date, :trade_id)
   end
 end
