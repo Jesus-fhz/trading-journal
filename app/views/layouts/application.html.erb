@@ -13,10 +13,12 @@
   </head> 
   <body>
     <p> 
-      <%= @current_user.present? %>
-      <%= link_to "Profile" %>
-      <%= link_to "Sign up" %>
-      <%= link_to "Logout", login_path, method: 'delete' %>
+      <% if  @current_user.present? %>
+        <%= link_to "Profile", user_path(@current_user.id) %>
+        <%= link_to "Logout", login_path, method: 'delete' %>
+      <% else %>
+        <%= link_to "Sign up", new_user_path %>
+      <% end %>
     </p>
     <%= yield %>
     

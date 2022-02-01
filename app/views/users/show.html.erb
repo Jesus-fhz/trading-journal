@@ -1,2 +1,47 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+   <div class="row justify-content-md-center ">
+      <div class="card  col-sm-10 col-md-8   reset-padding mt-3 " >
+         <div class="card-header">Hello <%= @user.name %> </div>
+         <div class="card-body">
+               <div class="d-flex justify-content-between"> 
+                  <h4 class="card-title"> Profile Panel </h4>
+                  <div>
+                     <%= link_to "Change Information",edit_user_path(@user.id), class: "btn btn-outline-primary mb-2" %>
+                     <%= link_to "Change Password",change_password_path, class: "btn btn-outline-warning mb-2" %>
+                  </div>
+               </div>
+            <div class="row justify-content-md-center">
+               <div class="col-xs-12 col-sm-12  col-md-6">
+                  <ul class="list-group">
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h6>Fullname:  </h6>
+                        <%= @user.name  %> <%= @user.last_name %>
+                     </li>
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h6>Email:</h6>
+                        <%= @user.email %>
+                     </li>
+                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h6>Date of birth:</h6>
+                        <%= @user.dob %>
+                     </li>
+                  </ul>
+               </div>
+               <div class="col-xs-12 col-sm-12  col-md-6">
+                <ul>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                     <h6>Total Transactions:</h6>
+                     <%= @user.trades.count %>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                     <h6>Amount Invested ($): </h6>
+                     <%= @user.trades.pluck(:entry_amount).reduce(:+)  %>
+                  </li>
+                </ul>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

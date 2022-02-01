@@ -15,4 +15,16 @@ class ApplicationController < ActionController::Base
             redirect_to login_path
         end
     end
+
+    def create_session(email, password)
+        user = User.find_by email: email
+        if user.present? && user.authenticate(password)
+            session[:user_id] = user.id
+            redirect_to trades_path
+        else
+        #Either user was nill or invalid password
+            redirect_to login_path
+            flash[:error] = "Bad Credentials, try again."
+        end
+    end
 end
