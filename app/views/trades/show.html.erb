@@ -3,7 +3,7 @@
       <div class="card border-secondary col-sm-10 col-md-8   reset-padding mt-3 " >
          <div class="card-header">Viewing Transaction and Notes</div>
          <div class="card-body">
-            <div class="d-flex justify-content-between"> 
+               <div class="d-flex justify-content-between"> 
                   <h4 class="card-title">Transaction </h4>
                   <div>
                      <%= link_to "Edit", edit_trade_path(@trades.id),  class: "btn btn-outline-dark mb-2" %>
@@ -53,7 +53,12 @@
             </div>
             <div class="row justify-content-md-center mt-5">
                <div class="col-md-12">
-                  <h4 class="card-title">Notes</h4>
+                  <div class="d-flex justify-content-between"> 
+                  <h4 class="card-title">Transaction </h4>
+                  <div>
+                     <%= link_to "New Note", new_journal_path(:trade => @trades.id),  class: "btn btn-outline-dark mb-2" %>
+                  </div>
+               </div>
                   <%@trades.journals.each do |el| %>
                   <div class="accordion mb-2" id="accordion<%= el.id %>">
                      <div class="accordion-item">
@@ -63,12 +68,13 @@
                            </button>
                         </h2>
                         <div id="collapse<%= el.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= el.id %>" data-bs-parent="#accordion<%= el.id %>" >
-                           <div class="accordion-body">
-                              <p>
-                                 <%= el.notes %>
-                              </p>
+                           <div class="accordion-body view-note-unique">
+                              <input type="hidden" class="unique_note" value="<%= el.notes %>">
+                              <div class="quill-show" >
+
+                              </div>   
                               <div class="d-flex justify-content-end "> 
-                                 <%= link_to "Edit", '#', class: "deleteItem btn btn-outline-primary mx-1" %>
+                                 <%= link_to "Edit", journal_path(el.id, :trade_show =>@trades.id ) , class: "btn btn-outline-primary mx-1" %>
                                  <%= link_to "Delete", '#', class: "deleteItem btn btn-outline-danger", link_url: "/journals/#{el.id}", title: "note from #{el.journal_date}"  %>
                               </div>
                            </div>

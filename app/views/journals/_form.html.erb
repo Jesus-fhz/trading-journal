@@ -1,0 +1,11 @@
+<div id="editor" editing_note="<%= @journal.notes.nil? ? "undefined" : @journal.notes %>">
+    
+</div>
+<%= form_with model: @journal, local: true, html: {id: "journal_form"} do |f| %>
+    <%= f.hidden_field :trade_id, value: params[:trade] %>
+    <%= f.hidden_field :notes  %>
+    <%= f.submit  %>
+<% end %>
+
+
+
