@@ -21,6 +21,7 @@ class TradesController < ApplicationController
 
   def create
     @trade = Trade.new trade_params
+    @trade  = Trade.push_data(@trade)
     @trade.save
     if  @trade.persisted?
       redirect_to trades_path    
@@ -42,6 +43,7 @@ class TradesController < ApplicationController
 
   def update
     @trade = Trade.find  params[:id]
+    @trade  = Trade.push_data(@trade)
     if @trade.update trade_params
       redirect_to trade_path(@trade.id)
     else
@@ -49,9 +51,10 @@ class TradesController < ApplicationController
     end
   end
 
+  
   private def trade_params
     user = { user_id: @current_user.id }
-    params.require(:trade).permit(:platform, :symbol, :type_id, :entry_date, :entry_price, :entry_amount, :exit_price, :leverage, :exit_date).reverse_merge(user)
+    params.require(:trade).permit(:platform, :symbol, :type_id, :entry_date, :entry_price, :entry_amount, :exit_price, :leverage, :exit_date,:perpetual_id).reverse_merge(user)
   end
 
   

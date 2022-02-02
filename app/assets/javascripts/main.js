@@ -20,7 +20,7 @@ const closeModal = function(){
 const elems = document.querySelectorAll('.datepicker_input');
 for (const elem of elems) {
    new Datepicker(elem, {
-    format: 'dd-mm-yyyy',
+    format: 'yyyy/mm/dd',
     maxDate: 'today',
     todayHighlight: true,
     clearBtn: true,

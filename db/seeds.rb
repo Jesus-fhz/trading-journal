@@ -14,7 +14,7 @@ type2 = Type.create! name: 'Stop loss'
 type3 = Type.create! name: 'Take Profit'
 type4 = Type.create! name: 'Liquidated'
 
-puts "Types created #{ Type.all.pluck(:name).join(' - ')  }"
+puts "Types created #{ Type.all.pluck(:name).join(' - ')}"
 
 User.destroy_all
 
@@ -36,6 +36,13 @@ u2 = User.create!(
 puts "Users created #{ User.all.pluck(:name).join(' *** ')  }"
 
 
+Perpetual.destroy_all
+
+p1 = Perpetual.create perpetual_type: "long"
+p2 = Perpetual.create perpetual_type: "short"
+
+puts "Perpetuals created #{ Perpetual.all.pluck(:perpetual_type).join(' *** ')} "
+
 Trade.destroy_all
 
 t1 = Trade.create!(
@@ -46,9 +53,11 @@ t1 = Trade.create!(
     entry_amount: 200,
     leverage: 5,
     exit_date: '2002/01/16',
+    profit: 48.74151018777462,
     exit_price: 105,
     type_id: type1.id,
-    user_id: u1.id
+    user_id: u1.id,
+    perpetual_id: p1.id
 ) 
 
 t2 = Trade.create!(
@@ -57,11 +66,13 @@ t2 = Trade.create!(
     symbol: 'ETH/USDT',
     entry_price: 44,
     entry_amount: 122,
-    leverage: 0,
+    leverage: 20,
     exit_date: '2002/01/16',
+    profit: -9.614262295081957,
     exit_price: 105,
     type_id: type3.id,
-    user_id: u2.id
+    user_id: u2.id,
+    perpetual_id: p2.id
 ) 
 
 
@@ -71,11 +82,13 @@ t3 = Trade.create!(
     symbol: 'FTM/USDT',
     entry_price: 3.5,
     entry_amount: 4000,
-    leverage: 0,
+    leverage: 25,
     exit_date: '2002/01/16',
+    profit:2900000.0,
     exit_price: 105,
     type_id: type1.id,
-    user_id: u1.id
+    user_id: u1.id,
+    perpetual_id: p1.id
 ) 
 
 #Destroy all Journals entries

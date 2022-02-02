@@ -8,29 +8,37 @@
             <thead class="table-dark"> 
                  <th>Platform</th>
                  <th>Symbol</th>
-                 <th>Exit type</th>
-                 <th>Entry Date</th>
-                 <th>Entry Price </th>
-                 <th>Entry Amount </th>
-                 <th>Exit Price</th>
+                 <th>Type</th>
+                 <th>Perpetual</th>
                  <th>Leverage</th>
-                 <th>Exit Date </th>
+                 <th>Entry Date </th>
+                 <th>Exit Date</th>
+                 <th>Position</th>
+                 <th>Entry Price</th>
+                 <th>Exit Price </th>
+                 <th>PNL</th>
                  <th></th>
                  
              </thead>
               <tbody>
               <% @trades.each do |el| %>
+                 
                 <a href="#">
                     <tr>
                         <td><%= el.platform %> </td>
                         <td><%= el.symbol %> </td>
                         <td><%= el.type.name %> </td>
-                        <td><%= el.entry_date %> </td>
-                        <td><%= el.entry_price %> </td>
-                        <td><%= el.entry_amount %> </td>
-                        <td><%= el.exit_price %> </td>
+                        <td><%= el.perpetual.perpetual_type %> </td>
                         <td><%= el.leverage %> </td>
-                        <td><%= el.exit_date %> </td>
+                        <td><%= el.entry_date.strftime("%d/%m/%Y") %> </td>
+                        <td><%= el.exit_date.strftime("%d/%m/%Y") %>
+                        <td><%= el.entry_amount %> </td>
+                        <td><%= el.entry_price %> </td>
+                        <td><%= el.exit_price %> </td>
+                         </td>
+                         <td class='<%= el.profit > 0 ? 'table-success ' : 'table-danger ' %> '>    
+                          <%= number_to_currency(el.profit)%>
+                        </td>
                         <td>
                         <%= link_to "View", trade_path(el.id),  class: "btn btn-outline-primary" %>
                         <%= link_to "Edit", edit_trade_path(el.id),  class: "btn btn-outline-dark" %>

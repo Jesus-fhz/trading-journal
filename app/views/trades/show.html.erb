@@ -24,11 +24,11 @@
                      </li>
                      <li class="list-group-item d-flex justify-content-between align-items-center">
                         <h6>Entry Date:</h6>
-                        <%= @trades.entry_date %>
+                        <%= @trades.entry_date.strftime("%d/%m/%Y") %>
                      </li>
                      <li class="list-group-item d-flex justify-content-between align-items-center">
                         <h6>Exit Date:</h6>
-                        <%= @trades.exit_date %>
+                        <%= @trades.exit_date.strftime("%d/%m/%Y") %>
                      </li>
                   </ul>
                </div>
@@ -50,12 +50,26 @@
                      <%= @trades.exit_price %>
                   </li>
                </div>
-               
+               <div class="col-xs-12 col-sm-12  col-md-12 mt-3 ">
+                  <% if @trades.profit >= 0  %>
+                           <div class="alert alert-dismissible alert-success p-4">
+                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                              <strong>Well done!</strong> Total profits from this transaction: <%= number_to_currency(@trades.profit) %>&nbsp;|&nbsp;
+                              You made: <strong><%=  number_with_precision((@trades.profit / @trades.entry_amount) * 100) %>% </strong>  from your initial investment.
+                           </div>
+                  <% else %>
+                         <div class="alert alert-dismissible alert-danger p-4">
+                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                              <strong>Oh snap!</strong> Total losses from this transaction: <%= number_to_currency(@trades.profit)  %> &nbsp;|&nbsp;
+                              You lost: <strong>  <%=  number_with_precision(((@trades.profit / @trades.entry_amount).abs) * 100 ) %>%</strong> from your initial investment.
+                           </div>
+                  <% end %>
+                  </div>
             </div>
             <div class="row justify-content-md-center mt-5">
                <div class="col-md-12">
                   <div class="d-flex justify-content-between"> 
-                  <h4 class="card-title">Transaction </h4>
+                  <h4 class="card-title">Transactions Journal </h4>
                   <div>
                      <%= link_to "New Note", new_journal_path(:trade => @trades.id),  class: "btn btn-outline-dark mb-2" %>
                   </div>
@@ -65,7 +79,7 @@
                      <div class="accordion-item">
                         <h2 class="accordion-header" id="heading<%= el.id %>">
                            <button class="accordion-button collapsed reset-shadow" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= el.id %>" aria-expanded="false" aria-controls="collapse<%= el.id %>">
-                           <%= el.journal_date %>
+                           <%= el.journal_date.strftime("%d/%m/%Y") %>
                            </button>
                         </h2>
                         <div id="collapse<%= el.id %>" class="accordion-collapse collapse" aria-labelledby="heading<%= el.id %>" data-bs-parent="#accordion<%= el.id %>" >

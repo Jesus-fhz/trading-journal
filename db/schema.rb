@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_010741) do
+ActiveRecord::Schema.define(version: 2022_02_02_091857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 2022_02_01_010741) do
     t.text "notes"
     t.date "journal_date"
     t.integer "trade_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "perpetuals", force: :cascade do |t|
+    t.string "perpetual_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,6 +42,8 @@ ActiveRecord::Schema.define(version: 2022_02_01_010741) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "perpetual_id"
+    t.float "profit"
   end
 
   create_table "types", force: :cascade do |t|

@@ -23,7 +23,7 @@
                      </li>
                      <li class="list-group-item d-flex justify-content-between align-items-center">
                         <h6>Date of birth:</h6>
-                        <%= @user.dob %>
+                        <%= @user.dob.strftime("%d/%m/%Y") %>
                      </li>
                   </ul>
                </div>
@@ -34,8 +34,12 @@
                      <%= @user.trades.count %>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                     <h6>Amount Invested ($): </h6>
-                     <%= @user.trades.pluck(:entry_amount).reduce(:+)  %>
+                     <h6>Amount Invested: </h6>
+                     <%= number_to_currency(@user.trades.pluck(:entry_amount).reduce(:+))  %>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                     <h6>Total return ($): </h6>
+                     <%= number_to_currency(@user.trades.pluck(:profit).reduce(:+))%>
                   </li>
                 </ul>
                </div>
