@@ -33,5 +33,4 @@ A simple trading tracker that also allows you to add personalized notes to each 
 
 
 ## Images
-
-![Alt text](https://nimb.ws/mENABa "Homepage")
+![Homepage](https://codeshapes.nimbusweb.me/box/attachment/6562003/pkvxfty193ffobfgaa74/nBdCoZsIv6OHr683/screenshot-trading-journal-ga.herokuapp.com-2022.02.04-09_31_13.png)
