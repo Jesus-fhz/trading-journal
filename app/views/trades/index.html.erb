@@ -1,10 +1,28 @@
-<h1>Trades#index</h1>
-<p>Find me in app/views/trades/index.html.erb</p>
-<%=  link_to 'Add new', new_trade_path, class: "btn btn-primary mx-1" %>
-<%= render partial: 'errors' %>
-<div class="container">
+<div class="d-flex justify-content-center align-items-center p-3" >
+        <div class="col-md-3 p-2">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                                <h3 class="fs-4">Transactions</h3>
+                            </div>
+                        <i class="fas fa-chart-line fs-5 primary-text border rounded-full secondary-bg p-3"></i>
+             </div>
+         </div>
+          <div class="col-md-3">
+                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div>
+                               <h3 class="fs-4"><%=  link_to 'Add new', new_trade_path, class: "text-decoration-none"%></h3>
+                            </div>
+                            <i 
+                                class="fas fa-plus fs-5 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+    </div>
+</div>
+<div class="container mt-3">
+ <div class="col sm-12 col-md-12 reset-padding">
+         <%= render partial: 'errors' %>
+  </div>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table bg-white rounded shadow-sm  table-hover">
             <thead class="table-dark"> 
                  <th>Platform</th>
                  <th>Symbol</th>

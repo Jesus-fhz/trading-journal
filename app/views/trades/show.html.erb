@@ -1,7 +1,10 @@
 <div class="container">
    <div class="row justify-content-md-center ">
-   <%= render partial: 'errors' %>
+      <div class="col sm-12 col-md-8 reset-padding">
+         <%= render partial: 'errors' %>
+      </div>
       <div class="card  col-sm-10 col-md-8   reset-padding mt-3 " >
+          
          <div class="card-header">Viewing Transaction and Notes</div>
          <div class="card-body">
                <div class="d-flex justify-content-between"> 
@@ -34,8 +37,8 @@
                </div>
                <div class="col-xs-12 col-sm-12  col-md-6">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                     <h6>Leverage:</h6>
-                     <%= @trades.leverage %>
+                     <h6>Perpetual:</h6>
+                     <%= @trades.perpetual.perpetual_type %>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                      <h6>Position:</h6>
@@ -54,14 +57,13 @@
                   <% if @trades.profit >= 0  %>
                            <div class="alert alert-dismissible alert-success p-4">
                               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                              <strong>Well done!</strong> Total profits from this transaction: <%= number_to_currency(@trades.profit) %>&nbsp;|&nbsp;
-                              You made: <strong><%=  number_with_precision((@trades.profit / @trades.entry_amount) * 100) %>% </strong>  from your initial investment.
+                              <strong>Well done!</strong> Total profits from this transaction: <%= number_to_currency(@trades.profit) %>
                            </div>
                   <% else %>
                          <div class="alert alert-dismissible alert-danger p-4">
                               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                              <strong>Oh snap!</strong> Total losses from this transaction: <%= number_to_currency(@trades.profit)  %> &nbsp;|&nbsp;
-                              You lost: <strong>  <%=  number_with_precision(((@trades.profit / @trades.entry_amount).abs) * 100 ) %>%</strong> from your initial investment.
+                              <strong>Oh snap!</strong> Total losses from this transaction: <%= number_to_currency(@trades.profit)  %> 
+                           
                            </div>
                   <% end %>
                   </div>

@@ -1,40 +1,48 @@
-<% if @user.errors.any? %>
-<div class="alert alert-dismissible alert-danger">
-  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-  <ul>
-    <% @user.errors.full_messages.each do |el| %>
-        <li>
-            <%=el %>
-        </li>
-    <% end %>
-    </ul>
+<div class="container">
+<div class="row mt-5">
+    <div class="col-xs-12 col-md-6">
+        <% if @user.errors.any? %>
+            <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <ul>
+                <% @user.errors.full_messages.each do |el| %>
+                    <li>
+                        <%=el %>
+                    </li>
+                <% end %>
+                </ul>
+            </div>
+        <% end %>
+        <%= form_with model: @user, local: true do |f| %>
+            <div class=" col-md-12">
+                <%= f.label :name, class: 'form-label'  %>
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="col-md-12">
+                <%= f.label :last_name, class: 'form-label'  %>
+                <%= f.text_field :last_name, class: 'form-control' %>
+            </div>
+            <div class="col-md-12">
+                <%= f.label :email, class: 'form-label'  %>
+                <%= f.text_field :email, class: 'form-control' %>
+            </div>
+            <div class="col-md-12">
+                <%= f.label :dob, class: 'form-label'  %>
+                <%= f.text_field :dob, class: 'form-control datepicker_input' %>
+            </div>
+            <div class="col-md-12">
+                <%= f.label :password, class: 'form-label'  %>
+                <%= f.password_field :password, class: 'form-control' %>
+            </div>
+            <div class="col-md-12">
+                <%=f.label :password_confirmation %>
+                <%=f.password_field :password_confirmation, class:'form-control'%>
+            <div class="col-md-12 ">
+                <%= f.submit  class: 'btn btn-primary mt-3 col-md-4' %>
+            </div>
+        <% end %>
+
+            
+            </div>
 </div>
-<% end %>
-<%= form_with model: @user, local: true do |f| %>
-    <div class=" col-md-12">
-        <%= f.label :name, class: 'form-label'  %>
-        <%= f.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="col-md-12">
-        <%= f.label :last_name, class: 'form-label'  %>
-        <%= f.text_field :last_name, class: 'form-control' %>
-    </div>
-    <div class="col-md-12">
-        <%= f.label :email, class: 'form-label'  %>
-        <%= f.text_field :email, class: 'form-control' %>
-    </div>
-     <div class="col-md-12">
-        <%= f.label :dob, class: 'form-label'  %>
-        <%= f.text_field :dob, class: 'form-control datepicker_input' %>
-    </div>
-    <div class="col-md-12">
-        <%= f.label :password, class: 'form-label'  %>
-        <%= f.password_field :password, class: 'form-control' %>
-    </div>
-    <div class="col-md-12">
-        <%=f.label :password_confirmation %>
-        <%=f.password_field :password_confirmation, class:'form-control'%>
-    <div class="col-md-12 ">
-        <%= f.submit  class: 'btn btn-primary mt-3 col-md-4' %>
-    </div>
-<% end %>
+</div>

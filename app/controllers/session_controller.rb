@@ -1,6 +1,12 @@
 class SessionController < ApplicationController
   
   def new
+    #render :layout => 'application'
+    #render :layout => 'panel'
+  end
+
+  def index
+    render :layout => 'application'
   end
 
   def create
@@ -9,6 +15,6 @@ class SessionController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path
+    redirect_to root_path
   end
 end

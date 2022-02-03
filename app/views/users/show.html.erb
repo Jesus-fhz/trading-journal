@@ -48,4 +48,28 @@
          </div>
       </div>
    </div>
+ 
+   <div class="card mt-5">
+      <div class="card-header">Some Statistics </div>
+      <div class="card-body">
+  
+<div class="d-flex justify-content-around align-items-center mt-3 p5 flex-wrap ">
+   <div class="r">
+      <%= column_chart @trades_user.group(:platform).group_by_day(:created_at).count ,width: "200px", height: "350px",colors: ["#b00", "#666","#EDe"] %>
+   </div>
+   <div> 
+      <%= bar_chart  [
+      ["Total Invested", @user.trades.pluck(:entry_amount).reduce(:+)],
+      ["Total Return", @user.trades.pluck(:profit).reduce(:+)]],prefix: "$",width: "500px", height: "150px"  %>
+      
+   </div>
+   <div >
+      <%= column_chart @trades_user.group(:symbol).group_by_day(:created_at).count,width: "200px", height: "350px" %>        
+   </div>
 </div>
+</div>
+</div>
+</div>
+
+</div>
+

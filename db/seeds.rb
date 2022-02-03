@@ -76,6 +76,7 @@ t2 = Trade.create!(
 ) 
 
 
+
 t3 = Trade.create!(
     entry_date: '2022/01/15',
     platform: 'Spooky Swap',
@@ -85,6 +86,50 @@ t3 = Trade.create!(
     leverage: 25,
     exit_date: '2002/01/16',
     profit:2900000.0,
+    exit_price: 105,
+    type_id: type1.id,
+    user_id: u1.id,
+    perpetual_id: p1.id
+) 
+
+t4 = Trade.create!(
+    entry_date: '2022/01/15',
+    platform: 'Spooky Swap',
+    symbol: 'FTM/USDT',
+    entry_price: 3.5,
+    entry_amount: 4000,
+    leverage: 25,
+    exit_date: '2002/01/16',
+    profit: 0,
+    exit_price: 105,
+    type_id: type1.id,
+    user_id: u1.id,
+    perpetual_id: p1.id
+) 
+
+t5 = Trade.create!(
+    entry_date: '2022/01/15',
+    platform: 'Spooky Swap',
+    symbol: 'FTM/USDT',
+    entry_price:22,
+    entry_amount: 33,
+    leverage: 25,
+    exit_date: '2002/01/16',
+    profit: 0,
+    exit_price: 105,
+    type_id: type1.id,
+    user_id: u1.id,
+    perpetual_id: p1.id
+) 
+t6 = Trade.create!(
+    entry_date: '2022/01/15',
+    platform: 'Spooky Swap',
+    symbol: 'FTM/USDT',
+    entry_price: 3.5,
+    entry_amount: 4000,
+    leverage: 25,
+    exit_date: '2002/01/16',
+    profit: 0,
     exit_price: 105,
     type_id: type1.id,
     user_id: u1.id,

@@ -1,6 +1,6 @@
 class JournalsController < ApplicationController
   before_action :check_if_logged_in
-  
+  layout "panel"
   def new
     @journal = Journal.new
   end

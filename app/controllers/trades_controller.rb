@@ -1,7 +1,7 @@
 class TradesController < ApplicationController
 
   before_action :check_if_logged_in
-
+  layout "panel"
   def index
     @trades = Trade.where(user_id: @current_user.id)
   end
@@ -24,8 +24,10 @@ class TradesController < ApplicationController
     @trade  = Trade.push_data(@trade)
     @trade.save
     if  @trade.persisted?
+      flash[:notice] = "Transaction has been created!"
       redirect_to trades_path    
     else
+      flash[:error] = "Something went wrong try again"
       render :new                                                                                                                                                
     end
   end
@@ -45,8 +47,10 @@ class TradesController < ApplicationController
     @trade = Trade.find  params[:id]
     @trade  = Trade.push_data(@trade)
     if @trade.update trade_params
+      flash[:notice] = "Transaction has been updated!"
       redirect_to trade_path(@trade.id)
     else
+      flash[:error] = "Something went wrong try again"
       render :edit
     end
   end

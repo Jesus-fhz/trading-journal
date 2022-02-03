@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :check_if_logged_in, except: [:new, :create]
-
+  layout 'panel'
 
   def show
     @user = User.find_by(id: @current_user.id)
+    @trades_user = Trade.where(user_id: @current_user.id)
+    render :layout => 'panel'
   end
 
   def edit
@@ -13,12 +15,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render :layout => 'application'                                                                                                                                               
   end
 
   def update
     @user = User.find  @current_user.id
     if @user.update user_info_params
-      redirect_to user_path(@current_user.id)
+      redirect_to user_path(@current_user.id), turbolinks: false
     else
       render :edit
     end
@@ -28,14 +31,15 @@ class UsersController < ApplicationController
     @user = User.new user_create_password
     @user.save
     if  @user.persisted?
-      create_session(@user.email, @user.password)  
+        create_session(@user.email, @user.password)  
     else
-      render :new                                                                                                                                                
+      render :new 
     end
   end
 
   def change_password
     @user = User.find_by(id: @current_user.id)
+    
   end
 
   def update_password
