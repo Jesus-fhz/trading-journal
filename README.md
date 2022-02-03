@@ -30,6 +30,7 @@ A simple trading tracker that also allows you to add personalized notes to each 
 ## Wishlist
 - Connect to any exchange API to retrieve user orders/transactions.
 - Add pagination to trades.
+- Add more validations (Specifics cases)
 
 
 ## Images
