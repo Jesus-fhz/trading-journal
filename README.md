@@ -33,4 +33,7 @@ A simple trading tracker that also allows you to add personalized notes to each 
 
 
 ## Images
-![Homepage](https://codeshapes.nimbusweb.me/box/attachment/6562003/pkvxfty193ffobfgaa74/nBdCoZsIv6OHr683/screenshot-trading-journal-ga.herokuapp.com-2022.02.04-09_31_13.png)
+![Homepage](https://codeshapes.nimbusweb.me/box/attachment/6562003/pkvxfty193ffobfgaa74/nBdCoZsIv6OHr683/screenshot-trading-journal-ga.herokuapp.com-2022.02.04-09_31_13.png  "Homepage")
+![Trades](https://codeshapes.nimbusweb.me/box/attachment/6562007/whe5ziavp1pm4arebyto/NmuNNNb1kqJ4kZro/screenshot-trading-journal-ga.herokuapp.com-2022.02.04-09_39_09.png "Trades")
+![View Transaction](https://codeshapes.nimbusweb.me/box/attachment/6562011/airxaodpxkw2out7h1ln/yWptqk3Pp8EbUxr5/screenshot-trading-journal-ga.herokuapp.com-2022.02.04-09_40_30.png "View Transaction")
+![Notes](https://codeshapes.nimbusweb.me/box/attachment/6562019/b9e7xpyt44dc2w27ud2i/Ez6lBkzlQq9iWGB9/screenshot-trading-journal-ga.herokuapp.com-2022.02.04-09_43_12.png "Notes")
