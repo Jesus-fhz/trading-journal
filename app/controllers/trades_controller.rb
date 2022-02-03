@@ -44,11 +44,11 @@ class TradesController < ApplicationController
   end
 
   def update
-    @trade = Trade.find  params[:id]
-    @trade  = Trade.push_data(@trade)
+    trade = Trade.find  params[:id]
+    @trade  = Trade.push_data(trade)
     if @trade.update trade_params
       flash[:notice] = "Transaction has been updated!"
-      redirect_to trade_path(@trade.id)
+      redirect_to trade_path(params[:id])
     else
       flash[:error] = "Something went wrong try again"
       render :edit

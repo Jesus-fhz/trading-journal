@@ -51,6 +51,10 @@
     font-weight: bold;
     border: none;
   }
+
+  .card-width{
+    width: 350px !important
+  }
   
   @media (min-width: 768px) {
     #sidebar-wrapper {

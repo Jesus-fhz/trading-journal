@@ -18,7 +18,7 @@
     </div>
 </div>
 <div class="container mt-3">
- <div class="col sm-12 col-md-12 reset-padding">
+ <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 reset-padding">
          <%= render partial: 'errors' %>
   </div>
     <div class="table-responsive">
@@ -39,30 +39,35 @@
                  
              </thead>
               <tbody>
-              <% @trades.each do |el| %>
-                 
-                <a href="#">
+              <% if @trades.any? %>
+                    <% @trades.each do |el| %>
+                        <a href="#">
+                            <tr>
+                                <td><%= el.platform %> </td>
+                                <td><%= el.symbol %> </td>
+                                <td><%= el.type.name %> </td>
+                                <td><%= el.perpetual.perpetual_type %> </td>
+                                <td><%= el.leverage %> </td>
+                                <td><%= el.entry_date.strftime("%d/%m/%Y") %> </td>
+                                <td><%= el.exit_date.strftime("%d/%m/%Y") %>
+                                <td><%= el.entry_amount %> </td>
+                                <td><%= el.entry_price %> </td>
+                                <td><%= el.exit_price %> </td>
+                                </td>
+                                <td class='<%= el.profit > 0 ? 'table-success ' : 'table-danger ' %> '>    
+                                <%= number_to_currency(el.profit)%>
+                                </td>
+                                <td>
+                                <%= link_to "View", trade_path(el.id),  class: "btn btn-outline-primary" %>
+                                <%= link_to "Edit", edit_trade_path(el.id),  class: "btn btn-outline-dark" %>
+                            </tr>
+                        </a> 
+                    <% end %>
+                <% else %>
                     <tr>
-                        <td><%= el.platform %> </td>
-                        <td><%= el.symbol %> </td>
-                        <td><%= el.type.name %> </td>
-                        <td><%= el.perpetual.perpetual_type %> </td>
-                        <td><%= el.leverage %> </td>
-                        <td><%= el.entry_date.strftime("%d/%m/%Y") %> </td>
-                        <td><%= el.exit_date.strftime("%d/%m/%Y") %>
-                        <td><%= el.entry_amount %> </td>
-                        <td><%= el.entry_price %> </td>
-                        <td><%= el.exit_price %> </td>
-                         </td>
-                         <td class='<%= el.profit > 0 ? 'table-success ' : 'table-danger ' %> '>    
-                          <%= number_to_currency(el.profit)%>
-                        </td>
-                        <td>
-                        <%= link_to "View", trade_path(el.id),  class: "btn btn-outline-primary" %>
-                        <%= link_to "Edit", edit_trade_path(el.id),  class: "btn btn-outline-dark" %>
+                        <td colspan="12" class="text-center"> <h3>No trades yet.</h3>  </td>
                     </tr>
-                </a> 
-             <% end %>
+                <% end %>
              </tbody>
         </table>
     <div>

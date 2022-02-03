@@ -1,8 +1,24 @@
-<h1>Types of Transactions </h1>
-<%= link_to "Add New Type", new_type_path, remote: true, :'data-bs-toggle' => 'modal', :'data-bs-target' => '#typeModal'   %>
-<div id="render-types">
-   <%= render  @types %>
-</div>
-<div class="container messages">
-</div>
+   <div class="container-fluid">
+   <div class="row justify-content-md-center ">
+      <div class="card col-xs-12 col-sm-12 col-md-8   reset-padding mt-3 " >
+         <div class="card-header">Viewving of Types </div>
+         <div class="card-body">
+               <div class="d-flex justify-content-between"> 
+                  <h4 class="card-title">Types of transactions </h4>
+                  <%= link_to "Add New Type", new_type_path, remote: true, class: "btn btn-outline-dark mb-3", :'data-bs-toggle' => 'modal', :'data-bs-target' => '#typeModal'   %>
+               </div>
+               <div class="d-flex justify-content-between"> 
+               </div>
+            <div class="container messages"></div>
+            <div class="row justify-content-md-center">
+               <div class="col-xs-12 col-sm-12  col-md-12">
+                  <ul class="list-group" id="render-types" >
+                   <%= render  @types %>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 <%= render partial:'modal' %>
+

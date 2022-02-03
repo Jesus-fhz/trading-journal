@@ -22,8 +22,8 @@ for (const elem of elems) {
    new Datepicker(elem, {
     format: 'yyyy/mm/dd',
     maxDate: 'today',
+    autohide: true,
     todayHighlight: true,
-    clearBtn: true,
    });
 }
 
