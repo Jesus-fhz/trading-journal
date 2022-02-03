@@ -1,24 +1,37 @@
-# README
+# Trading Journal
+##  Keep track of your trading transactions, see your PNL and add personalized notes.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Check [demo](https://trading-journal-ga.herokuapp.com/) 
 
-Things you may want to cover:
 
-* Ruby version
+## About this project:
+A simple trading tracker that also allows you to add personalized notes to each transaction to learn and improve your trading skills.
 
-* System dependencies
+## Tech
 
-* Configuration
+- HTML
+- CSS
+- Bootstrap
+- Vanilla Javascript
+- Ruby on Rails
+- Postgresql
+- Heroku (Deployment)
 
-* Database creation
+## Features:
+- CRUD for Transactions/Trades
+- CRUD notes for any transaction
+- Rich editor for your notes
+- Graphics chart for your transactions
+- Responsive
 
-* Database initialization
+## Known bugs :
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Wishlist
+- Connect to any exchange API to retrieve user orders/transactions.
+- Add pagination to trades.
 
-* Deployment instructions
 
-* ...
+## Images
+
+![Alt text](https://nimb.ws/mENABa "Homepage")
