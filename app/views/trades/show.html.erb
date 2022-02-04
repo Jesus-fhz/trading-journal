@@ -91,7 +91,7 @@
                               </div>   
                               <div class="d-flex justify-content-end "> 
                                  <%= link_to "Edit", journal_path(el.id, :trade =>@trades.id ) , class: "btn btn-outline-primary mx-1" %>
-                                 <%= link_to "Delete", '#', class: "deleteItem btn btn-outline-danger", link_url: "/journals/#{el.id}", title: "note from #{el.journal_date}"  %>
+                                 <%= link_to "Delete", '#', class: "deleteItem btn btn-outline-danger", link_url: "/journals/#{el.id}", title: "note from #{el.journal_date.strftime("%d/%m/%Y")}"  %>
                               </div>
                            </div>
                         </div>
