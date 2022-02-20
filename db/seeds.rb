@@ -142,19 +142,19 @@ Journal.destroy_all
 #Create Seeds for journal
 j1 = Journal.create!(
     notes: "This trade wasn't the best one, I SHOULD NOVE LEVAREGE more the X5",
-    journal_date: DateTime.current,
+    journal_date: DateTime.now.strftime('%Y/%m/%d'),
     trade_id: t3.id
 )
 
 j2 = Journal.create!(
     notes: "Repeated the trade without levarge this time it wokerd",
-    journal_date: DateTime.current,
+    journal_date: DateTime.now.strftime('%Y/%m/%d'),
     trade_id: t3.id
 )
 
 j3 = Journal.create!(
     notes: "When doing stop loss I should have set up a  better support",
-    journal_date: DateTime.current,
+    journal_date: DateTime.now.strftime('%Y/%m/%d'),
     trade_id: t1.id
 )
 

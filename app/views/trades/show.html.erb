@@ -76,6 +76,7 @@
                      <%= link_to "New Note", new_journal_path(:trade => @trades.id),  class: "btn btn-outline-dark mb-2" %>
                   </div>
                </div>
+                  
                   <%@trades.journals.each do |el| %>
                   <div class="accordion mb-2" id="accordion<%= el.id %>">
                      <div class="accordion-item">
