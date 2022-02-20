@@ -30,7 +30,7 @@ class JournalsController < ApplicationController
   end
 
   def create
-    @journal = Journal.new(notes: params[:journal][:notes], trade_id: params[:journal][:trade_id], journal_date: DateTime.now.strftime('%m-%d-%Y'))
+    @journal = Journal.new(notes: params[:journal][:notes], trade_id: params[:journal][:trade_id], journal_date: DateTime.now)
     @journal.save
     if  @journal.persisted?
       flash[:notice] = "Your note has been added!"
