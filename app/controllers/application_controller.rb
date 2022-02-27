@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
         end
     end
 
-
-    
     def create_session(email, password)
         user = User.find_by email: email
         if user.present? && user.authenticate(password)
