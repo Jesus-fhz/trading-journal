@@ -1,8 +1,6 @@
 class SessionController < ApplicationController
   
   def new
-    #render :layout => 'application'
-    #render :layout => 'panel'
   end
 
   def index
